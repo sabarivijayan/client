@@ -34,84 +34,48 @@ const SignIn = () => {
   };
 
   return (
-    // <div className={styles.container}>
-    //   <div className={styles.backgroundImage}>
-    //     <div className={styles.card}>
-    //       <Image src="/img/cross-ash.svg" height={24} width={24} />
-    //       <h2 className={styles.heading}>Sign In</h2>
-    //       <div className={styles.inputFieldWrapper}>
-    //         <p className={styles.inName}>Email or Phone Number</p>
-    //         <input type="text" placeholder="" className={styles.inputField} />
-    //         <p className={styles.inName}>Password</p>
-    //         <div className={styles.passwordField}>
-    //           <input
-    //             type={showPassword ? "text" : "password"}
-    //             value={password}
-    //             onChange={(e) => setPassword(e.target.value)}
-    //             placeholder="Enter your password"
-    //             className={styles.inputField}
-    //           />
-    //           <Image
-    //             src="/img/eye.svg"
-    //             height={24}
-    //             width={24}
-    //             onClick={togglePassword}
-    //           />
-    //         </div>
-    //         <button className={styles.signUpButton} onClick={onRegister}>
-    //           Sign In
-    //         </button>
-    //         <p className={styles.signInText}>
-    //           Already have an account?{" "}
-    //           <span
-    //             onClick={() => router.push("/login")}
-    //             className={styles.signInLink}
-    //           >
-    //             Sign Up
-    //           </span>
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-<div className={styles.container}>
-<div className={styles.backgroundImage}>
-<div className={styles.card}>
-<Image src="/img/cross-ash.svg" height={24} width={24} />
-    <h2 className={styles.heading}>Sign Up</h2>
-    <div className={styles.inputFieldWrapper}>
-        <p className={styles.inName}>Name</p>
-        <input type="text" placeholder="" className={styles.inputField}/>
+    <div className={styles.container}>
+      <div className={styles.backgroundImage}>
+        <div className={styles.card}>
+          <Image src="/img/cross-ash.svg" height={24} width={24} />
+          <h2 className={styles.heading}>Sign Up</h2>
+          <div className={styles.inputFieldWrapper}>
+            <p className={styles.inName}>Name</p>
+            <input type="text" placeholder="" className={styles.inputField} />
 
-        <p className={styles.inName}>Email or Phone Number</p>
-        <input type="text" placeholder="" className={styles.inputField}/>
-        <p className={styles.inName}>Password</p>
-        <div className={styles.passwordField}>
-            <input type="password" placeholder="" className={styles.inputField}/>
-            <Image
-                 src="/img/eye.svg"
-                 height={24}
-                 width={24}
-                 onClick={togglePassword}           /> 
+            <p className={styles.inName}>Email or Phone Number</p>
+            <input type="text" placeholder="" className={styles.inputField} />
+            <p className={styles.inName}>Password</p>
+            <div className={styles.passwordField}>
+              <input
+                type="password"
+                placeholder=""
+                className={styles.inputField}
+              />
+              <Image
+                src="/img/eye.svg"
+                height={24}
+                width={24}
+                onClick={togglePassword}
+              />
+            </div>
+
+            <button className={styles.signUpButton} onClick={onRegister}>
+              Sign In
+            </button>
+            <p className={styles.signInText}>
+              Already have an account?{" "}
+              <span
+                onClick={() => router.push("/login")}
+                className={styles.signInLink}
+              >
+                Sign In
+              </span>
+            </p>
+          </div>
         </div>
-
-        <button className={styles.signUpButton} onClick={onRegister}>
-               Sign In
-             </button>
-             <p className={styles.signInText}>
-               Already have an account?{" "}
-               <span
-                 onClick={() => router.push("/login")}
-                 className={styles.signInLink}
-               >
-                 Sign In
-               </span>
-             </p>
+      </div>
     </div>
-
-</div>
-</div>
-</div>
   );
 };
 
