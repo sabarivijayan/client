@@ -23,6 +23,33 @@ const StoreContextProvider = (props) =>{
     }
 
     const removeFromCart = async (itemId) =>{
-        
+        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+        if (token) {
+            await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } });
+        }
     }
+    const loadCartData = async (token) => {
+        const response = await axios.post(url + "/api/cart/get", {}, { headers: token });
+        setCartItems(response.data.cartData);
+    }
+    const contextValue = {
+        url,
+        cartItems,
+        addToCart,
+        removeFromCart,
+        getTotalCartAmount,
+        token,
+        setToken,
+        loadCartData,
+        setCartItems,
+    };
+
+    return (
+        <StoreContext.Provider value={contextValue}>
+            {props.children}
+        </StoreContext.Provider>
+    )
+
 }
+
+export default StoreContextProvider;
