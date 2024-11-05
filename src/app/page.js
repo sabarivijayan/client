@@ -1,10 +1,10 @@
 import styles from "./page.module.css";
-import SignIn from "./sign-in/page";
+import SignUp from "./sign-up/page";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <SignIn/>
+      <SignUp/>
     </div>
   );
 }
