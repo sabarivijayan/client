@@ -1,5 +1,6 @@
+import Image from "next/image";
 import styles from "./page.module.css";
-import SignUp from "./sign-up/page";
+import SignUp from "./components/signup/signup";
 
 export default function Home() {
   return (
