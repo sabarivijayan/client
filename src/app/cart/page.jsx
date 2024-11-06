@@ -86,11 +86,14 @@ function Cart() {
       );
 
       if (response.data.success) {
+        const { total, discount, payable, discountNames } = response.data;
         setSummary({
-          total: response.data.total,
-          discount: response.data.discount || 0,
-          payable: response.data.payable || response.data.total,
+          total,
+          discount: discount || 0,
+          payable: payable || total,
+          discountNames: discountNames || [],
         });
+        
       }
     } catch (error) {
       console.error("Error fetching discounted total:", error);
@@ -133,7 +136,10 @@ function Cart() {
       if (error.response?.status === 401) router.push("/signin");
     }
   };
-
+  console.log("summary",summary)
+  console.log("summary total",summary.total)
+  console.log("summary discount",summary.discount)
+  console.log("summary payable",summary.payable)
   if (isLoading) {
     return (
       <div className="loading-container">
@@ -238,20 +244,24 @@ function Cart() {
           </div>
           <div className="summary-item total">
             <span>Total</span>
-            <span>${summary.payable.toFixed(2)}</span>
+            <span>
+              $
+              {typeof summary.payable === "number"
+                ? summary.payable.toFixed(2)
+                : "0.00"}
+            </span>
           </div>
           {summary.discountNames?.length > 0 && (
             <div className="applied-discounts">
               <h4>Applied Discounts:</h4>
               <ul>
-                {summary.discountNames.map((appliedDiscounts, index) => (
-                  <li key={index}>{appliedDiscounts}</li>
+                {summary.discountNames.map((discountMessage, index) => (
+                  <li key={index}>{discountMessage}</li>
                 ))}
               </ul>
             </div>
           )}
-          
-          
+
           {summary.discount > 0 && (
             <p className="congrats-message">
               Congratulations! You've Saved ${summary.discount?.toFixed(2)}{" "}
